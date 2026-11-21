@@ -294,14 +294,6 @@ tr:last-child td{border-bottom:0}
 }
 @media (max-width:760px){
   .app{grid-template-columns:1fr}
-  .nav{position:sticky;top:0;z-index:20;height:auto;flex-direction:row;overflow-x:auto;padding:8px;border-right:0;border-bottom:1px solid var(--border);gap:4px;scrollbar-width:none}
-  .nav .lbl,.nav .spacer,.nav .syncst .t{display:none}
-  .nav .syncst{width:auto;padding:7px 4px}
-  .brand{padding:4px 6px}
-  .brand span{display:none}
-  .nav a,.nav button.navbtn{width:auto;white-space:nowrap;flex:none}
-  .nav .nm{overflow:visible}
-  main{padding:18px 12px 70px}
   h1{font-size:22px}
   .grid{grid-template-columns:1fr}
   .cal{gap:3px}
@@ -315,8 +307,7 @@ tr:last-child td{border-bottom:0}
 }
 
 /* ============================== MATRIX LOOK ============================== */
-#rain{position:fixed;inset:0;z-index:0;pointer-events:none;transition:opacity .6s}
-.app{position:relative;z-index:1}
+#rain{position:fixed;inset:0;z-index:-1;pointer-events:none;transition:opacity .6s}
 html.crt body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
 ::selection{background:var(--accent);color:var(--accent-ink)}
 *{scrollbar-width:thin;scrollbar-color:var(--border-hi) transparent}
@@ -441,7 +432,7 @@ details summary{color:var(--text-2);cursor:pointer;margin-top:12px;font-size:13p
 .center .spinner{border-color:var(--border);border-top-color:var(--accent)}
 @media (max-width:760px){
   .nav{background:rgba(0,6,2,.96)}
-  .nav .lvl,.cmdbtn kbd{display:none !important}
+  .cmdbtn kbd{display:none !important}
   .fclock{font-size:44px}
   .termmodal{margin-top:0;align-self:flex-end}
 }
@@ -496,6 +487,99 @@ h2.sect{margin:22px 0 12px}
 .sub.done span{text-decoration:line-through;color:var(--muted)}
 @media (max-width:760px){ .rem{flex-wrap:wrap} .remt{min-width:0} .strip{display:none} }
 
+/* ============================== SIZING (bigger, easier to read) ============================== */
+body{font-size:15.5px;line-height:1.55}
+.app{grid-template-columns:256px 1fr}
+main{max-width:1320px;padding:30px 40px 80px}
+h1,h1.term{font-size:30px}
+h2{font-size:15.5px}
+.sub{font-size:15px}
+.hint{font-size:14px}
+.pill{font-size:13px;padding:3px 9px}
+.btn{padding:10px 16px;font-size:15px}
+.btn.sm{padding:6px 12px;font-size:14px}
+input[type=text],input[type=number],input[type=date],input[type=time],input[type=search],select,textarea{padding:10px 12px;font-size:15px}
+label.f,.f{font-size:14px}
+label.f input,label.f select,label.f textarea{font-size:15.5px}
+.nav{padding:18px 14px}
+.nav a,.nav button.navbtn{padding:9px 12px;font-size:15px}
+.brand{font-size:18px}
+.card{padding:22px}
+.grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.layout2{gap:18px}
+.today-val{font-size:30px}
+.today-val.sm{font-size:19px}
+.stat .v{font-size:24px}
+.stat .k,.stat .s{font-size:13px}
+svg.chart text{font-size:12.5px}
+.legend{font-size:13px}
+.log{font-size:14px}
+.tip{font-size:14px}
+th{font-size:13px}
+.wk button{height:40px;font-size:13px}
+.seg button{padding:9px 14px;font-size:15px}
+.remt{font-size:26px}
+.cdn{font-size:28px}
+.todo{padding:12px 4px}
+.todo input[type=checkbox]{width:20px;height:20px}
+#tabbar,#scrim{display:none}
+
+/* ============================== PHONE LAYOUT ============================== */
+@media (max-width:760px){
+  body{font-size:16px}
+  .app{grid-template-columns:minmax(0,1fr)}
+  main{padding:16px 14px calc(96px + env(safe-area-inset-bottom));max-width:100%}
+  .head>.row .btn{flex:1 1 auto}
+  h1,h1.term{font-size:24px}
+  .head{margin-bottom:14px}
+  .head>.row{width:100%}
+  .card{padding:16px}
+  .grid,.layout2,.split{gap:14px}
+  /* finger-sized controls; 16px inputs stop the phone from zooming in */
+  .btn{min-height:46px;padding:10px 16px;font-size:16px}
+  .btn.sm{min-height:38px;font-size:14.5px}
+  input[type=text],input[type=number],input[type=date],input[type=time],input[type=search],select,textarea{font-size:16px !important;min-height:46px}
+  .qlog{flex-wrap:wrap}
+  .qlog .btn.pri{flex:1 1 100%}
+  .seg button{padding:10px 14px}
+  .seg.rate span{padding:11px 16px;font-size:16px}
+  .iconbtn{padding:10px;font-size:16px}
+  .todo input[type=checkbox]{width:22px;height:22px}
+  .today-val{font-size:28px}
+  .stats{grid-template-columns:1fr 1fr;gap:10px}
+  .stat .v{font-size:21px}
+  .tabs{width:100%}
+  .tabs .seg{flex-wrap:nowrap}
+  .weektable td:first-child,.weektable th:first-child{position:sticky;left:0;background:var(--surface-solid);z-index:1;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+  .wk button{min-width:38px;height:42px}
+  .hb-row{grid-template-columns:minmax(70px,100px) 1fr auto}
+  /* sidebar becomes a slide-out drawer */
+  .nav{position:fixed;top:0;left:0;bottom:0;width:min(86vw,320px);height:100%;z-index:95;flex-direction:column;overflow-y:auto;padding:18px 14px calc(18px + env(safe-area-inset-bottom));border-right:1px solid var(--border-hi);transform:translateX(-105%);transition:transform .22s ease;background:#000}
+  body.drawer .nav{transform:none;box-shadow:0 0 40px rgba(0,0,0,.9)}
+  .nav .lbl,.nav .spacer,.nav .syncst .t,.brand span{display:revert}
+  .nav a,.nav button.navbtn{width:100%;flex:none;padding:12px;font-size:16px}
+  #scrim{display:block;position:fixed;inset:0;z-index:94;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .2s}
+  body.drawer #scrim{opacity:1;pointer-events:auto}
+  /* bottom tab bar */
+  #tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(0,4,1,.96);border-top:1px solid var(--border-hi);padding:6px 4px calc(6px + env(safe-area-inset-bottom));backdrop-filter:blur(6px)}
+  #tabbar a,#tabbar button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;background:none;border:0;color:var(--muted);font:inherit;font-size:11.5px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  #tabbar svg{width:22px;height:22px}
+  #tabbar .on{color:var(--accent);text-shadow:0 0 8px var(--glow)}
+  #tabbar .tablog{color:var(--accent-ink)}
+  #tabbar .tablog i{display:flex;align-items:center;justify-content:center;width:52px;height:40px;border-radius:12px;background:var(--accent);box-shadow:0 0 14px var(--glow);font-style:normal;font-size:24px;font-weight:700;line-height:1}
+  #tabbar .tablog span{color:var(--accent)}
+  #tabbar b{position:absolute;top:4px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-size:11px;line-height:18px;text-align:center}
+  #toast{bottom:calc(84px + env(safe-area-inset-bottom))}
+  #alerts{bottom:calc(84px + env(safe-area-inset-bottom));right:10px;left:10px;max-width:none}
+  .modal .box{padding:18px 16px calc(18px + env(safe-area-inset-bottom))}
+}
+.qlog input[type=time]{flex:1 1 130px;min-width:130px}
+form[data-form="log"] input,form[data-form="log"] select{flex:1 1 150px}
+@media (max-width:760px){
+  form[data-form="log"] input[name=note]{flex-basis:100%}
+  form[data-form="log"] .btn.pri{flex:1 1 100%}
+}
+
 </style>
 </head>
 <body>
@@ -508,6 +592,8 @@ h2.sect{margin:22px 0 12px}
 <div class="tip" id="tip" role="tooltip"></div>
 <div id="toast" role="status" aria-live="polite"></div>
 <div id="alerts" aria-live="assertive"></div>
+<nav id="tabbar" aria-label="Tabs"></nav>
+<div id="scrim"></div>
 <noscript><p style="padding:20px;color:#0f0">daily_logger needs JavaScript.</p></noscript>
 <script>
 "use strict";
@@ -869,7 +955,7 @@ const DB = (() => {
   }
   function writeLocal() {
     try { localStorage.setItem(LKEY, JSON.stringify(S)); }
-    catch (e) { hooks.error('Could not save — browser storage is full or blocked'); }
+    catch (e) { if (!writeLocal.warned) { writeLocal.warned = true; hooks.error('This preview can’t save — open index.html in a normal browser tab to keep your data'); } }
   }
   function cloudCfg() {
     let config = FIREBASE_CONFIG;
@@ -1090,6 +1176,7 @@ const ICON = {
   search: '<circle cx="8" cy="8" r="5"/><path d="M12 12l4 4"/>',
   settings: '<circle cx="9" cy="9" r="2.5"/><path d="M9 1.8v2M9 14.2v2M1.8 9h2M14.2 9h2M3.9 3.9l1.4 1.4M12.7 12.7l1.4 1.4M3.9 14.1l1.4-1.4M12.7 5.3l1.4-1.4"/>',
   plus: '<path d="M9 3v12M3 9h12"/>',
+  menu: '<path d="M3 5h12M3 9h12M3 13h12"/>',
   week: '<rect x="2" y="4" width="14" height="10" rx="2"/><path d="M4.5 9h1M8.5 9h1M12.5 9h1" stroke-width="2.2"/>',
   bell: '<path d="M4.5 12.5V8a4.5 4.5 0 019 0v4.5l1.5 1.5h-12z"/><path d="M7.5 15.5a1.6 1.6 0 003 0"/>',
   focus: '<circle cx="9" cy="10" r="6.5"/><path d="M9 10V6.5M7 1.8h4"/>',
@@ -1337,6 +1424,12 @@ function renderNav(r) {
   h += `<a href="#/settings" id="syncst" class="syncst"><i></i><span class="t"></span></a>`;
   h += link('#/settings', icon('settings'), 'Settings', r.name === 'settings');
   $('#nav').innerHTML = h;
+  // phone tab bar
+  const tab = (href, ico, label, on, badge) => `<a href="${href}" class="${on ? 'on' : ''}">${ico}<span>${label}</span>${badge ? `<b>${badge}</b>` : ''}</a>`;
+  $('#tabbar').innerHTML = tab('#/', icon('today'), 'Today', r.name === 'today') + tab('#/week', icon('week'), 'Week', r.name === 'week')
+    + `<button class="tablog" data-act="cmd" aria-label="Quick log"><i>＋</i><span>Log</span></button>`
+    + tab('#/todos', icon('todos'), 'To-do', r.name === 'todos', open)
+    + `<button data-act="drawer" class="${['today', 'week', 'todos'].includes(r.name) ? '' : 'on'}" aria-label="Menu">${icon('menu')}<span>More</span></button>`;
   renderStatus();
 }
 
@@ -2321,8 +2414,7 @@ const Rain = (() => {
 
 /* ===================================================================== boot screen */
 function boot() {
-  if (sessionStorage.getItem('dl.booted') || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  sessionStorage.setItem('dl.booted', '1');
+  try { if (sessionStorage.getItem('dl.booted') || matchMedia('(prefers-reduced-motion: reduce)').matches) return; sessionStorage.setItem('dl.booted', '1'); } catch (e) { return; }
   const el = document.createElement('div'); el.className = 'boot';
   const lines = ['> loading daily_logger…', `> ${S.sections.length} sections · ${S.entries.length} entries · ${S.todos.filter(x => !x.done).length} open tasks`, `> storage: ${DB.cloudCfg() ? 'firebase sync' : 'local'}`, '> ready.'];
   document.body.appendChild(el);
@@ -2584,15 +2676,17 @@ function newSectionFrom(data) {
 }
 document.addEventListener('click', async ev => {
   const el = ev.target.closest('[data-act]');
-  if (!el) { if (ev.target.id === 'modal') closeModal(); return; }
+  if (!el) { if (ev.target.id === 'modal') closeModal(); if (ev.target.id === 'scrim') document.body.classList.remove('drawer'); return; }
   if (el.tagName === 'INPUT' && el.type === 'checkbox' && !['todo-toggle'].includes(el.dataset.act)) { /* handled below */ }
   const { act, id, v } = el.dataset;
+  if (act !== 'drawer' && el.closest('#nav')) document.body.classList.remove('drawer');
   switch (act) {
     case 'close': closeModal(); break;
     case 'reload': location.reload(); break;
     case 'sync-retry': DB.retry(); toast('Reconnecting…'); break;
     case 'sync-copy': { const v2 = $('#devlink').value; try { await navigator.clipboard.writeText(v2); toast('Copied — open/paste it on your other device'); } catch (e) { prompt('Copy this:', v2); } break; }
     case 'sync-unlink': if (confirm('Disconnect this device from Firebase? Your data stays here and in Firebase.')) { DB.unlink(); toast('Disconnected'); } break;
+    case 'drawer': document.body.classList.toggle('drawer'); break;
     case 'cmd': openCmd(); break;
     case 'count-add': { const sec = secById(id), card = el.closest('.scard'), cat = card && card.querySelector('select[name=cat]') ? card.querySelector('select[name=cat]').value : ''; addEntry(sec, today(), 1, '', cat); refresh(); break; }
     case 'count-undo': { const es = entriesOn(id, today()).sort((a, b) => b.ts - a.ts); if (es[0]) { DB.remove('entries', es[0].id); undoToast('Removed one', () => DB.put('entries', es[0])); } refresh(); break; }
@@ -2698,7 +2792,40 @@ document.addEventListener('click', async ev => {
   }
 });
 
-document.addEventListener('submit', ev => {
+/* Forms are handled without real form submission, so the app also works inside sandboxed
+   previews (where browsers block submitting forms). Submit buttons and Enter call this directly. */
+function submitForm(form, submitter) {
+  if (!form || !form.dataset.form) return;
+  if (!form.reportValidity()) return;
+  onSubmit({ target: form, submitter: submitter || null, preventDefault() {} });
+}
+/* in-app links (#/…) are routed by hand so they also work inside embedded previews */
+document.addEventListener('click', ev => {
+  const a = ev.target.closest('a[href^="#"]');
+  if (!a || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.button) return;
+  ev.preventDefault();
+  const h = a.getAttribute('href');
+  if (location.hash !== h) location.hash = h; else render();
+}, true);
+document.addEventListener('click', ev => {
+  const btn = ev.target.closest('button');
+  if (!btn || btn.disabled) return;
+  const form = btn.form || btn.closest('form');
+  if (!form || !form.dataset.form || (btn.getAttribute('type') || 'submit') !== 'submit') return;
+  ev.preventDefault(); ev.stopPropagation();
+  submitForm(form, btn);
+}, true);
+document.addEventListener('keydown', ev => {
+  if (ev.key !== 'Enter' || ev.isComposing || ev.shiftKey) return;
+  const el = ev.target;
+  if (!el || el.tagName !== 'INPUT' || (el.dataset && el.dataset.subadd) || ['checkbox', 'radio', 'button', 'file'].includes(el.type)) return;
+  const form = el.form || el.closest('form');
+  if (!form || !form.dataset.form) return;
+  ev.preventDefault();
+  submitForm(form, form.querySelector('button[type=submit], button:not([type])'));
+}, true);
+document.addEventListener('submit', ev => { ev.preventDefault(); if (ev.target.dataset.form) submitForm(ev.target, ev.submitter); });
+function onSubmit(ev) {
   const form = ev.target, kind = form.dataset.form; if (!kind) return;
   ev.preventDefault();
   const fd = new FormData(form), id = form.dataset.id;
@@ -2782,7 +2909,7 @@ document.addEventListener('submit', ev => {
     else sec = newSectionFrom(data);
     modalBack = null; closeModal(); location.hash = `#/s/${sec.id}`; refresh();
   }
-});
+}
 
 let inputT;
 document.addEventListener('input', ev => {
@@ -2881,6 +3008,7 @@ document.addEventListener('focusout', () => setTimeout(() => {
 
 let lastHash = location.hash;
 window.addEventListener('hashchange', () => {
+  document.body.classList.remove('drawer');
   if (location.hash.startsWith('#sync=')) { DB.consumeSyncHash(); location.hash = '#/'; return; }
   if (location.hash !== lastHash) { lastHash = location.hash; window.scrollTo(0, 0); view.entryLimit = 50; view.entryQ = ''; view.entryCat = ''; }
   if (modalOpen()) { modalBack = null; closeModal(); }
